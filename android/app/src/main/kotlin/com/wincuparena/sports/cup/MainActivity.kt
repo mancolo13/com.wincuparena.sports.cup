@@ -1,4 +1,4 @@
-package com.arenasport.football.matchtracker
+package com.wincuparena.sports.cup
 
 import android.os.Build
 import android.os.Bundle

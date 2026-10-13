@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../theme/app_theme.dart';
 
-class Tab1Screen extends StatefulWidget {
+class Tab1Screen extends StatelessWidget {
   const Tab1Screen({super.key});
-
-  @override
-  State<Tab1Screen> createState() => _Tab1ScreenState();
-}
-
-class _Tab1ScreenState extends State<Tab1Screen> {
-  int _counter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -23,100 +16,42 @@ class _Tab1ScreenState extends State<Tab1Screen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              padding: const EdgeInsets.all(24.0),
+              padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 color: AppTheme.surfaceColor,
-                borderRadius: BorderRadius.circular(24.0),
-                border: Border.all(
-                  color: AppTheme.primaryColor.withValues(alpha: 0.3),
-                  width: 1.5,
-                ),
-              ),
-              child: Column(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: AppTheme.primaryColor.withValues(alpha: 0.15),
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Icon(
-                      Icons.emoji_events,
-                      size: 48,
-                      color: AppTheme.primaryColor,
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  const Text(
-                    'Active Cups',
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.w900,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    'cups',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.white.withValues(alpha: 0.7),
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      setState(() => _counter++);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('View Cups выполнено! (Счетчик: \$$_counter)'),
-                          duration: const Duration(seconds: 1),
-                          backgroundColor: AppTheme.primaryColor,
-                        ),
-                      );
-                    },
-                    icon: const Icon(Icons.bolt, color: Colors.black),
-                    label: const Text('View Cups'),
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: const Size.fromHeight(50),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 20),
-            Container(
-              padding: const EdgeInsets.all(20.0),
-              decoration: BoxDecoration(
-                color: AppTheme.cardColor,
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(22),
+                border: Border.all(color: AppTheme.primaryColor.withValues(alpha: 0.35)),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Активность',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        'Всего взаимодействий:',
-                        style: TextStyle(color: Colors.white.withValues(alpha: 0.7)),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                        decoration: BoxDecoration(
+                          color: AppTheme.primaryColor.withValues(alpha: 0.2),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: const Text('ГЛАВНЫЙ КУБОК', style: TextStyle(color: AppTheme.primaryColor, fontWeight: FontWeight.bold, fontSize: 11)),
                       ),
-                      Text(
-                        '\$$_counter',
-                        style: const TextStyle(
-                          color: AppTheme.secondaryColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                      const Text('1/4 Финала', style: TextStyle(color: Colors.white70, fontSize: 12)),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  const Text('Кубок Чемпионов 2026', style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 6),
+                  const Text('16 Команд • Призовой фонд \$50,000 • 8 выбыло', style: TextStyle(color: Colors.white60, fontSize: 13)),
+                  const SizedBox(height: 16),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ElevatedButton.icon(
+                          onPressed: () {},
+                          icon: const Icon(Icons.emoji_events, color: Colors.black, size: 18),
+                          label: const Text('Сетка турнира'),
+                          style: ElevatedButton.styleFrom(backgroundColor: AppTheme.primaryColor, foregroundColor: Colors.black),
                         ),
                       ),
                     ],
@@ -124,8 +59,41 @@ class _Tab1ScreenState extends State<Tab1Screen> {
                 ],
               ),
             ),
+            const SizedBox(height: 22),
+            const Text('Текущие турниры', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 12),
+            _buildTournamentCard('Европейский Кубок Вызова', 'Групповой этап • Тур 5 из 6', '32 команды', Icons.public),
+            _buildTournamentCard('Суперкубок Столицы', 'Полуфиналы • Завтра 20:00', '4 команды', Icons.military_tech),
+            _buildTournamentCard('Юношеская Премьер-Лига', 'Регулярный сезон', '18 команд', Icons.sports_soccer),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildTournamentCard(String name, String stage, String count, IconData icon) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(color: AppTheme.cardColor, borderRadius: BorderRadius.circular(14)),
+      child: Row(
+        children: [
+          CircleAvatar(
+            backgroundColor: AppTheme.primaryColor.withValues(alpha: 0.2),
+            child: Icon(icon, color: AppTheme.primaryColor, size: 20),
+          ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(name, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14)),
+                Text(stage, style: const TextStyle(color: Colors.white60, fontSize: 12)),
+              ],
+            ),
+          ),
+          Text(count, style: const TextStyle(color: AppTheme.secondaryColor, fontSize: 12, fontWeight: FontWeight.bold)),
+        ],
       ),
     );
   }
