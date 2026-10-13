@@ -8,7 +8,7 @@ class Tab3Screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('WinCupArena • Brackets'),
+        title: const Text('Win • Brackets'),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
