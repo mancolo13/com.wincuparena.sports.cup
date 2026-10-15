@@ -7,10 +7,10 @@ class Tab2Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final matches = [
-      {'t1': 'Реал М.', 't2': 'Бавария', 'score': '2 : 1', 'min': '74 мин', 'live': true},
-      {'t1': 'Арсенал', 't2': 'ПСЖ', 'score': '1 : 1', 'min': '62 мин', 'live': true},
-      {'t1': 'Ман Сити', 't2': 'Интер', 'score': '3 : 0', 'min': 'Завершен', 'live': false},
-      {'t1': 'Барселона', 't2': 'Боруссия Д.', 'score': '2 : 0', 'min': 'Завершен', 'live': false},
+      {'t1': 'Real Madrid', 't2': 'Bayern', 'score': '2 : 1', 'min': '74 min', 'live': true},
+      {'t1': 'Arsenal', 't2': 'PSG', 'score': '1 : 1', 'min': '62 min', 'live': true},
+      {'t1': 'Man City', 't2': 'Inter', 'score': '3 : 0', 'min': 'Full Time', 'live': false},
+      {'t1': 'Barcelona', 't2': 'Dortmund', 'score': '2 : 0', 'min': 'Full Time', 'live': false},
     ];
 
     return Scaffold(
@@ -22,7 +22,7 @@ class Tab2Screen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const Text('Матчи плей-офф', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+            const Text('Playoff Matches', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
             const SizedBox(height: 12),
             ...matches.map((m) => Container(
               margin: const EdgeInsets.only(bottom: 12),

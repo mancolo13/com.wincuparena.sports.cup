@@ -7,11 +7,11 @@ class Tab4Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scorers = [
-      {'pos': '1', 'name': 'Эрлинг Холанд', 'team': 'Ман Сити', 'goals': '9'},
-      {'pos': '2', 'name': 'Килиан Мбаппе', 'team': 'Реал М.', 'goals': '7'},
-      {'pos': '3', 'name': 'Винисиус Жуниор', 'team': 'Реал М.', 'goals': '6'},
-      {'pos': '4', 'name': 'Букайо Сака', 'team': 'Арсенал', 'goals': '5'},
-      {'pos': '5', 'name': 'Харри Кейн', 'team': 'Бавария', 'goals': '5'},
+      {'pos': '1', 'name': 'Erling Haaland', 'team': 'Man City', 'goals': '9'},
+      {'pos': '2', 'name': 'Kylian Mbappe', 'team': 'Real Madrid', 'goals': '7'},
+      {'pos': '3', 'name': 'Vinicius Junior', 'team': 'Real Madrid', 'goals': '6'},
+      {'pos': '4', 'name': 'Bukayo Saka', 'team': 'Arsenal', 'goals': '5'},
+      {'pos': '5', 'name': 'Harry Kane', 'team': 'Bayern', 'goals': '5'},
     ];
 
     return Scaffold(
@@ -30,7 +30,7 @@ class Tab4Screen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18),
                 border: Border.all(color: AppTheme.primaryColor.withValues(alpha: 0.3)),
               ),
-              child: const Text('Таблица бомбардиров Кубка', style: TextStyle(color: AppTheme.primaryColor, fontWeight: FontWeight.bold, fontSize: 16)),
+              child: const Text('Cup Top Scorers', style: TextStyle(color: AppTheme.primaryColor, fontWeight: FontWeight.bold, fontSize: 16)),
             ),
             const SizedBox(height: 16),
             ...scorers.map((s) => Container(
@@ -55,7 +55,7 @@ class Tab4Screen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Text('${s["goals"]} голов', style: const TextStyle(color: AppTheme.secondaryColor, fontWeight: FontWeight.bold, fontSize: 14)),
+                  Text('${s["goals"]} goals', style: const TextStyle(color: AppTheme.secondaryColor, fontWeight: FontWeight.bold, fontSize: 14)),
                 ],
               ),
             )),
